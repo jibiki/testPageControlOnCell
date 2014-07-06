@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class TitleCell;
+
 @interface MasterViewController : UITableViewController <UIScrollViewDelegate>
+
+@property (strong, nonatomic) TitleCell *dummyTitleCell;
 
 @end

@@ -23,6 +23,7 @@
 		08A23A3A1969353800CC0B1C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 08A23A381969353800CC0B1C /* InfoPlist.strings */; };
 		08A23A3C1969353800CC0B1C /* testPageControlOnCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A23A3B1969353800CC0B1C /* testPageControlOnCellTests.m */; };
 		08A23A47196936D900CC0B1C /* ImageScrollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A23A46196936D900CC0B1C /* ImageScrollCell.m */; };
+		08A23A4A1969529D00CC0B1C /* TitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08A23A491969529D00CC0B1C /* TitleCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		08A23A3B1969353800CC0B1C /* testPageControlOnCellTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = testPageControlOnCellTests.m; sourceTree = "<group>"; };
 		08A23A45196936D900CC0B1C /* ImageScrollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageScrollCell.h; sourceTree = "<group>"; };
 		08A23A46196936D900CC0B1C /* ImageScrollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageScrollCell.m; sourceTree = "<group>"; };
+		08A23A481969529D00CC0B1C /* TitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleCell.h; sourceTree = "<group>"; };
+		08A23A491969529D00CC0B1C /* TitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TitleCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,12 +124,14 @@
 				08A23A1C1969353800CC0B1C /* AppDelegate.h */,
 				08A23A1D1969353800CC0B1C /* AppDelegate.m */,
 				08A23A1F1969353800CC0B1C /* Main.storyboard */,
-				08A23A45196936D900CC0B1C /* ImageScrollCell.h */,
-				08A23A46196936D900CC0B1C /* ImageScrollCell.m */,
 				08A23A221969353800CC0B1C /* MasterViewController.h */,
 				08A23A231969353800CC0B1C /* MasterViewController.m */,
 				08A23A251969353800CC0B1C /* DetailViewController.h */,
 				08A23A261969353800CC0B1C /* DetailViewController.m */,
+				08A23A481969529D00CC0B1C /* TitleCell.h */,
+				08A23A491969529D00CC0B1C /* TitleCell.m */,
+				08A23A45196936D900CC0B1C /* ImageScrollCell.h */,
+				08A23A46196936D900CC0B1C /* ImageScrollCell.m */,
 				08A23A281969353800CC0B1C /* Images.xcassets */,
 				08A23A141969353800CC0B1C /* Supporting Files */,
 			);
@@ -263,6 +268,7 @@
 				08A23A241969353800CC0B1C /* MasterViewController.m in Sources */,
 				08A23A1A1969353800CC0B1C /* main.m in Sources */,
 				08A23A47196936D900CC0B1C /* ImageScrollCell.m in Sources */,
+				08A23A4A1969529D00CC0B1C /* TitleCell.m in Sources */,
 				08A23A271969353800CC0B1C /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

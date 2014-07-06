@@ -10,6 +10,7 @@
 
 #import "DetailViewController.h"
 #import "ImageScrollCell.h"
+#import "TitleCell.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -31,6 +32,9 @@
 
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
+    
+    self.dummyTitleCell = [self.tableView dequeueReusableCellWithIdentifier:@"TitleCell"];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,36 +62,49 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ImageScrollCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-//    NSDate *object = _objects[indexPath.row];
-//    cell.textLabel.text = [object description];
-    
-    NSInteger numOfPages = 3;
-    CGFloat width = cell.scrollView.bounds.size.width;
-    CGFloat height = cell.scrollView.bounds.size.height;
-    NSArray *colors = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
-    
-    
-    cell.scrollView.delegate = cell;
-    cell.scrollView.contentSize = CGSizeMake(numOfPages * width, height);
-    for (int i = 0; i < numOfPages; i++) {
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i * width, 0, width, height)];
-        label.text = [NSString stringWithFormat:@"%dページ", i + 1];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.backgroundColor = colors[i];
-        [cell.scrollView addSubview:label];
+    NSInteger row = indexPath.row;
+    if (row == 0) {
+        TitleCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TitleCell" forIndexPath:indexPath];
         
+        [self updateTitleCell:cell atIndexPath:indexPath];
+//        cell.separatorInset = UIEdgeInsetsZero;
+        
+        [cell setNeedsLayout];
+        [cell layoutIfNeeded];
+        
+        return cell;
+    }
+    else if (row == 1) {
+        ImageScrollCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+        
+        NSInteger numOfPages = 3;
+        CGFloat width = cell.scrollView.bounds.size.width;
+        CGFloat height = cell.scrollView.bounds.size.height;
+        NSArray *colors = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
+        
+        
+        cell.scrollView.delegate = cell;
+        cell.scrollView.contentSize = CGSizeMake(numOfPages * width, height);
+        for (int i = 0; i < numOfPages; i++) {
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i * width, 0, width, height)];
+            label.text = [NSString stringWithFormat:@"%dページ", i + 1];
+            label.textAlignment = NSTextAlignmentCenter;
+            label.backgroundColor = colors[i];
+            [cell.scrollView addSubview:label];
+            
+        }
+        
+        cell.pageControl.numberOfPages = numOfPages;
+        
+        return cell;
     }
     
-    cell.pageControl.numberOfPages = numOfPages;
-    
-    return cell;
+    return nil;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -106,6 +123,21 @@
     }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+            [self updateTitleCell:self.dummyTitleCell atIndexPath:indexPath];
+            [self.dummyTitleCell layoutSubviews];
+            CGFloat height = [self.dummyTitleCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+            
+            return height + 1;
+            
+        default:
+            return 260;
+    }
+}
+
 /*
 // Override to support rearranging the table view.
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
@@ -121,6 +153,21 @@
     return YES;
 }
 */
+
+- (void)updateTitleCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
+{
+    switch (indexPath.row) {
+        case 0:
+        {
+            TitleCell *titleCell = (TitleCell*)cell;
+            titleCell.titleLabel.text = @"Quick brown fox jumps over the lazy dog.";
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
