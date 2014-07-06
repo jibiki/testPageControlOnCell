@@ -9,6 +9,7 @@
 #import "MasterViewController.h"
 
 #import "DetailViewController.h"
+#import "ImageScrollCell.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -62,17 +63,37 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ImageScrollCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+//    NSDate *object = _objects[indexPath.row];
+//    cell.textLabel.text = [object description];
+    
+    NSInteger numOfPages = 3;
+    CGFloat width = cell.scrollView.bounds.size.width;
+    CGFloat height = cell.scrollView.bounds.size.height;
+    NSArray *colors = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
+    
+    
+    cell.scrollView.delegate = cell;
+    cell.scrollView.contentSize = CGSizeMake(numOfPages * width, height);
+    for (int i = 0; i < numOfPages; i++) {
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i * width, 0, width, height)];
+        label.text = [NSString stringWithFormat:@"%dページ", i + 1];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.backgroundColor = colors[i];
+        [cell.scrollView addSubview:label];
+        
+    }
+    
+    cell.pageControl.numberOfPages = numOfPages;
+    
     return cell;
 }
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
