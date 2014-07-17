@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="rS3-R9-Ivy">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -68,6 +68,7 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="200" id="66p-Bm-MKm"/>
+                                                <constraint firstAttribute="width" constant="280" id="Pva-7m-X8a"/>
                                             </constraints>
                                         </scrollView>
                                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="I1f-Qb-If0">
@@ -84,10 +85,9 @@
                                         </pageControl>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="AcH-Pn-GTe" firstAttribute="leading" secondItem="d3P-M7-ByW" secondAttribute="leading" constant="20" id="76O-Ae-mFE"/>
                                         <constraint firstItem="AcH-Pn-GTe" firstAttribute="top" secondItem="d3P-M7-ByW" secondAttribute="top" constant="20" id="OJY-e3-rDY"/>
                                         <constraint firstItem="I1f-Qb-If0" firstAttribute="top" secondItem="AcH-Pn-GTe" secondAttribute="bottom" constant="8" id="PKm-S6-Fes"/>
-                                        <constraint firstAttribute="trailing" secondItem="AcH-Pn-GTe" secondAttribute="trailing" constant="20" id="ciF-fx-qSO"/>
+                                        <constraint firstAttribute="centerX" secondItem="AcH-Pn-GTe" secondAttribute="centerX" id="T5p-po-DCf"/>
                                         <constraint firstAttribute="centerX" secondItem="I1f-Qb-If0" secondAttribute="centerX" id="qzP-zl-OKI"/>
                                     </constraints>
                                 </tableViewCellContentView>

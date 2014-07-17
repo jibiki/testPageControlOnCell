@@ -82,13 +82,14 @@
     else if (row == 1) {
         ImageScrollCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
         
-        NSInteger numOfPages = 3;
+        NSInteger numOfPages = 4;
         CGFloat width = cell.scrollView.bounds.size.width;
         CGFloat height = cell.scrollView.bounds.size.height;
-        NSArray *colors = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor]];
+        NSArray *colors = @[[UIColor redColor], [UIColor greenColor], [UIColor blueColor], [UIColor yellowColor]];
         
         
         cell.scrollView.delegate = cell;
+        cell.scrollView.clipsToBounds = NO;
         cell.scrollView.contentSize = CGSizeMake(numOfPages * width, height);
         for (int i = 0; i < numOfPages; i++) {
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(i * width, 0, width, height)];
