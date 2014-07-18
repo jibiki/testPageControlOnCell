@@ -43,6 +43,8 @@
  
             // Page Control
             self.pageControl.currentPage = currentPage;
+            
+            NSLog(@"scrollView.width=%f", scrollView.frame.size.width);
         }
         
     }
